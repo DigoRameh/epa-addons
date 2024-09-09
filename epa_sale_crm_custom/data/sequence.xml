@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="True">
+    <record id="seq_epa_sale_order_custom_lead" model="ir.sequence">
+        <field name="name">Custom CRM Lead Sequence (in epa_sale_crm_custom)</field>
+        <field name="code">crm.lead</field>
+        <field name="prefix">SO-%(y)s-</field>
+        <field name="padding">4</field>
+        <field name="number_next">1000</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

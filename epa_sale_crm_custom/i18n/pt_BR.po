@@ -1,0 +1,333 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* epa_sale_crm_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-24 19:58+0000\n"
+"PO-Revision-Date: 2024-09-24 17:15-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.4.4\n"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__legal_risks
+msgid "Acceptable Legal Risks"
+msgstr "Riscos Legais Aceitáveis"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__political_risks
+msgid "Acceptable Political Risks"
+msgstr "Riscos Políticos Aceitáveis"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__technological_risks
+msgid "Acceptable Technological Risks"
+msgstr "Riscos Políticos Aceitáveis"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__adequate_documentation
+msgid "Adequate Documentation"
+msgstr "Riscos Tecnológicos Aceitáveis"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__payment_term
+msgid "Adequate Payment Term"
+msgstr "Prazo de pagamento adequado"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__quotation_analytic_account_id
+msgid "Analytic Account for Quotation"
+msgstr "Conta analítica para cotação"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__appropriate_equipment
+msgid "Appropriate Equipment"
+msgstr "Equipamento Apropriado"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_order_forminherited
+msgid "Attachment Files"
+msgstr "Arquivo de Anexos"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_sale_order__attachment_ids
+msgid "Attachments"
+msgstr "Anexos"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_order_forminherited
+msgid "Attachments CRM"
+msgstr "Anexos CRM"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__available_labor
+msgid "Available Labor"
+msgstr "Mão de obra disponível"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model,name:epa_sale_crm_custom.model_crm_stage
+msgid "CRM Stages"
+msgstr "CRM Estágios"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_analytic_account_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: epa_sale_crm_custom
+#: code:addons/epa_sale_crm_custom/models/crm_lead.py:0
+#, python-format
+msgid ""
+"Cannot move to stage \"{}\". Missing fields:\n"
+"\n"
+"{}"
+msgstr ""
+"Não é possível passar para o estágio \"{}\". Campos ausentes:\n"
+"\n"
+"{}"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__client_financial_health
+msgid "Client Adequate Financial Health"
+msgstr "Saúde Financeira Adequada do Cliente"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__alias_name
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_form_inherited
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_quick_create_opportunity_form_inherited
+msgid "Codename"
+msgstr "Codinome"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_form_inherited
+msgid "Company"
+msgstr "Empresa"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__company_contacts
+msgid "Company Contacts"
+msgstr "Contatos da Empresa"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_analytic_account_wizard_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_analytic_account_wizard_form
+msgid "Create a New Analytic Account?"
+msgstr "Criar uma nova Conta Analítica?"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__create_new_analytic
+msgid "Create a new Analytic Account"
+msgstr "Criar uma nova Conta Analítica"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_form_inherited
+msgid "Criteria"
+msgstr "Critérios"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__display_name
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_stage__display_name
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_sale_order__display_name
+msgid "Display Name"
+msgstr "Nome de exibição"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,help:epa_sale_crm_custom.field_sale_order__attachment_ids
+msgid "Employee can submit any documents which supports their explanation"
+msgstr "O funcionário pode enviar quaisquer documentos que comprovem sua explicação"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__completion_period
+msgid "Feasible Completion Period"
+msgstr "Período de conclusão viável"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__financial_viability
+msgid "Financial Viability"
+msgstr "Viabilidade Financeira"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__group_companies
+msgid "Group Companies"
+msgstr "Empresas do Grupo"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__id
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__id
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_stage__id
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_sale_order__id
+msgid "ID"
+msgstr "ID"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__interesting_client
+msgid "Interesting Client"
+msgstr "Cliente interessante"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__is_won_stage
+msgid "Is Won Stage"
+msgstr "É um estágio ganho"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__subcontracting_laboratory
+msgid "Laboratory"
+msgstr "Laboratório"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead____last_update
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard____last_update
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_stage____last_update
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr "Última modificação em"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última atualização por"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última atualização em"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__lead_id
+msgid "Lead"
+msgstr "Lead"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model,name:epa_sale_crm_custom.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Lead/Oportunidade"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__operational_viability
+msgid "Operational Viability"
+msgstr "Viabilidade Operacional"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__name
+msgid "Opportunity"
+msgstr "Oportunidade"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__subcontracting_others
+msgid "Others"
+msgstr "Outros"
+
+#. module: epa_sale_crm_custom
+#: code:addons/epa_sale_crm_custom/wizard/crm_lead_analytic_account_wizard.py:0
+#, python-format
+msgid "Please select an existing Analytic Account or create a new one."
+msgstr "Selecione uma Conta Analítica existente ou crie uma nova."
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__subcontracting_probe
+msgid "Probe"
+msgstr ""
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__project_manager
+msgid "Project Manager"
+msgstr "Gestor de Projeto"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__proposal_date
+msgid "Proposal Date"
+msgstr "Data da Proposta"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__qualified_labor
+msgid "Qualified Labor"
+msgstr "Mão de Obra Qualificada"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_form_inherited
+msgid "Requirements"
+msgstr "Requisitos"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,help:epa_sale_crm_custom.field_crm_stage__validate_criteria_fields
+msgid "Requires all criteria fields filled when moving to this stage."
+msgstr "Requer que todos os campos de critérios sejam preenchidos ao passar para este estágio."
+
+#. module: epa_sale_crm_custom
+#: model:ir.model,name:epa_sale_crm_custom.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venda"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__subcontracting_sampling
+msgid "Sampling"
+msgstr "Amostragem"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead_analytic_account_wizard__analytic_account_id
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_analytic_account_wizard_form
+msgid "Select an existing Analytic Account"
+msgstr "Selecione uma Conta Analítica existente"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_analytic_account_wizard_form
+msgid "Select or Create Analytic Account"
+msgstr "Selecione ou Crie uma Conta Analítica"
+
+#. module: epa_sale_crm_custom
+#: model_terms:ir.ui.view,arch_db:epa_sale_crm_custom.view_crm_lead_form_inherited
+msgid "Subcontracting"
+msgstr "Subcontratação"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__subcontracting_possibility
+msgid "Subcontracting Possibility"
+msgstr "Possibilidade de subcontratação"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__type_id
+msgid "Type"
+msgstr "Tipo"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_stage__validate_criteria_fields
+msgid "Validate Criteria Fields"
+msgstr "Validar campos de critérios"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__validated_methodologies
+msgid "Validated Methodologies"
+msgstr "Metodologias Validadas"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model.fields,field_description:epa_sale_crm_custom.field_crm_lead__client_cash_flow
+msgid "We Serve Client Cash Flow"
+msgstr "Atendemos o Fluxo de Caixa do Cliente"
+
+#. module: epa_sale_crm_custom
+#: model:ir.model,name:epa_sale_crm_custom.model_crm_lead_analytic_account_wizard
+msgid "Wizard to select or create analytic account"
+msgstr "Assistente para selecionar ou criar conta analítica"
