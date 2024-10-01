@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="group_time_bank_manager" model="res.groups">
+        <field name="name">Time Bank Manager</field>
+        <field name="comment">Allow manage time bank for all employees</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+
+</odoo>

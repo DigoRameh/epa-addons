@@ -31,6 +31,7 @@
 
              <field name="total_overtime" position="after">
                 <field name="total_overtime_real" widget="float_time" readonly="1" />
+                <field name="total_sundays_holidays" widget="float_time" />
              </field>
 
         </field>

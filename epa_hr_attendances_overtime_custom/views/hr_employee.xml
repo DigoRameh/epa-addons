@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<!-- Copyright 2024 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_employee_form" model="ir.ui.view">
+        <field
+            name="name"
+        >hr.employee.view.form (in epa_hr_attendances_overtime_custom)</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    name="action_view_attendances"
+                    help="Employee Time Bank"
+                    class="oe_stat_button"
+                    icon="fa-clock-o"
+                    type="object"
+                    groups="epa_hr_attendances_overtime_custom.group_time_bank_manager"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="time_bank_real" widget="float_time" /> Hours
+                        </span>
+                        <span class="o_stat_text">Time Bank</span>
+                    </div>
+                </button>
+            </div>
+            <notebook position="inside">
+                <page
+                    string="Time Bank"
+                    groups="epa_hr_attendances_overtime_custom.group_time_bank_manager"
+                >
+                    <group>
+                        <group>
+                            <field name="total_overtime" widget="float_time" />
+                            <field name="total_difftime" widget="float_time" />
+                            <field name="time_bank" widget="float_time" />
+                            <field name="total_leave_time" widget="float_time" />
+                            <field name="time_bank_real" widget="float_time" />
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="view_employee_tree" model="ir.ui.view">
+        <field
+            name="name"
+        >hr.employee.tree (in epa_hr_attendances_overtime_custom)</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree" />
+        <field name="arch" type="xml">
+            <tree position="inside">
+                <field
+                    name="time_bank"
+                    widget="float_time"
+                    optional="hide"
+                    groups="epa_hr_attendances_overtime_custom.group_time_bank_manager"
+                />
+                <field
+                    name="total_leave_time"
+                    widget="float_time"
+                    optional="hide"
+                    groups="epa_hr_attendances_overtime_custom.group_time_bank_manager"
+                />
+                <field
+                    name="time_bank_real"
+                    widget="float_time"
+                    optional="hide"
+                    groups="epa_hr_attendances_overtime_custom.group_time_bank_manager"
+                />
+            </tree>
+        </field>
+    </record>
+
+</odoo>
