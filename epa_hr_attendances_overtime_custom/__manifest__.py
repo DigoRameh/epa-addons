@@ -19,6 +19,8 @@
         "views/hr_attendance_sheet.xml",
         "views/hr_attendance_sheet_report.xml",
         "views/hr_attendance_sheet_template.xml",
+        "views/hr_employee.xml",
+        "security/epa_hr_attendances_overtime_custom_security.xml",
     ],
     "demo": [],
     "auto_install": True,

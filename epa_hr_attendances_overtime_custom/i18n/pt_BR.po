@@ -1,21 +1,41 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* epa_hr_attendances_overtime_custom
+# 	* hr_attendances_overtime
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-02 16:36+0000\n"
-"PO-Revision-Date: 2023-01-02 13:39-0300\n"
-"Last-Translator: Marcel Savegnago <marcel.savegnago@gmail.com>\n"
+"POT-Creation-Date: 2023-10-23 12:00-0300\n"
+"PO-Revision-Date: 2023-01-02 12:00-0300\n"
+"Last-Translator: Wesley Oliveira, 2024\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: pt_BR\n"
-"X-Generator: Poedit 3.0\n"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.actions.report,print_report_name:epa_hr_attendances_overtime_custom.action_report_hr_attendance_sheet
+msgid ""
+"(                 'Attendance Sheet - %s - %s to %s' % "
+"(object.employee_id.name, object.request_date_from, object.request_date_to))"
+msgstr ""
+"(                 'Folha de Presença - %s - %s to %s' % "
+"(object.employee_id.name, object.request_date_from, object.request_date_to))"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.view_employee_form
+msgid "<span class=\"o_stat_text\">Time Bank</span>"
+msgstr "<span class=\"o_stat_text\">Banco de Horas</span>"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid ""
+"<span> - </span>\n"
+"                <span>Empresa: </span>"
+msgstr ""
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
@@ -34,8 +54,28 @@ msgstr "<span>Período: </span>"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "<strong>CPF: </strong>"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "<strong>Função: </strong>"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "<strong>PIS: </strong>"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
 msgid "<strong>Total Absence</strong>"
-msgstr "<strong>Total de Absenteísmo</strong>"
+msgstr "<strong>Total de Falta</strong>"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "<strong>Total Attendance Balance</strong>"
+msgstr "<strong>Banco de Horas do Mês</strong>"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
@@ -44,23 +84,18 @@ msgstr "<strong>Total de Presença</strong>"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
-msgid "<strong>Total Diff Time</strong>"
-msgstr "<strong>Total de Diferença de Tempo</strong>"
-
-#. module: epa_hr_attendances_overtime_custom
-#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
-msgid "<strong>Total Late in</strong>"
-msgstr "<strong>Total de Atraso na Entrada</strong>"
-
-#. module: epa_hr_attendances_overtime_custom
-#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
-msgid "<strong>Total Overtime</strong>"
-msgstr "<strong>Total Hora Extra</strong>"
+msgid "<strong>Total Neg. Attendance</strong>"
+msgstr "<strong>Total de Presença (-)</strong>"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
 msgid "<strong>Total Planned Attendance</strong>"
-msgstr "<strong>Total Planejado de Presença</strong>"
+msgstr "<strong>Horas Úteis no Mês</strong>"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "<strong>Total Pos. Attendance</strong>"
+msgstr "<strong>Total de Presença (+)</strong>"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.hr_attendance_sheet_form_view
@@ -78,6 +113,11 @@ msgid "Actual Signout"
 msgstr "Saída Atual"
 
 #. module: epa_hr_attendances_overtime_custom
+#: model:res.groups,comment:epa_hr_attendances_overtime_custom.group_time_bank_manager
+msgid "Allow manage time bank for all employees"
+msgstr "Permite gerenciar o banco de horas de todos os funcionários"
+
+#. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
 msgid "Attendance Reason"
 msgstr "Razão de Presença"
@@ -85,6 +125,7 @@ msgstr "Razão de Presença"
 #. module: epa_hr_attendances_overtime_custom
 #: model:ir.actions.report,name:epa_hr_attendances_overtime_custom.action_report_hr_attendance_sheet
 #: model:ir.model,name:epa_hr_attendances_overtime_custom.model_hr_attendance_sheet
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee_public__attendance_sheet_id
 msgid "Attendance Sheet"
 msgstr "Folha de Presença"
 
@@ -114,39 +155,145 @@ msgid "Day"
 msgstr "Dia"
 
 #. module: epa_hr_attendances_overtime_custom
+#: model:ir.model,name:epa_hr_attendances_overtime_custom.model_hr_employee
+msgid "Description"
+msgstr "Descrição"
+
+#. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
 msgid "Diff Time"
-msgstr "Diferença de Tempo"
+msgstr "Saldo Negativo"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet__display_name
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet_line__display_name
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee_public__display_name
+msgid "Display Name"
+msgstr "Nome exibido"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "Domingo"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__attendance_sheet_ids
+msgid "Employee Attendance Sheets"
+msgstr "Folhas de Ponto do Funcionário"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__leave_ids
+msgid "Employee Leaves"
+msgstr "Folgas do Funcionário"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.view_employee_form
+msgid "Employee Time Bank"
+msgstr "Banco de Horas do Funcionário"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet_line__first_check_out
+msgid "First Check Out"
+msgstr "Primeira Saída"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet__attendance_ids
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet_line__attendance_ids
 msgid "HR Attendance"
 msgstr "HR Presença"
 
 #. module: epa_hr_attendances_overtime_custom
-#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
-msgid "Late in"
-msgstr "Atraso na Entrada"
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.view_employee_form
+msgid "Hours"
+msgstr "Horas"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet__id
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet_line__id
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__id
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee_public__id
+msgid "ID"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet_line__last_check_in
+msgid "Last Check In"
+msgstr "Última Entrada"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet____last_update
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet_line____last_update
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee____last_update
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee_public____last_update
+msgid "Last Modified on"
+msgstr "Última modificação em"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
 msgid "Overtime"
-msgstr "Hora Extra"
+msgstr "Saldo Positivo"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model,name:epa_hr_attendances_overtime_custom.model_hr_employee_public
+msgid "Public Employee"
+msgstr "Empregado Público"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
-msgid "Planned Signin"
-msgstr "Entrada Planejada"
+msgid "Quarta-feira"
+msgstr ""
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
-msgid "Planned Signout"
-msgstr "Saída Planejada"
+msgid "Quinta-feira"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "Segunda-feira"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "Sexta-feira"
+msgstr ""
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
 msgid "Status"
 msgstr "Situação"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet__total_sundays_holidays
+msgid "Sundays and Holidays"
+msgstr "Domingos e Feriados"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "Sábado"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
+msgid "Terça-feira"
+msgstr ""
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__time_bank
+#: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.view_employee_form
+msgid "Time Bank"
+msgstr "Banco de Horas"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:res.groups,name:epa_hr_attendances_overtime_custom.group_time_bank_manager
+msgid "Time Bank Manager"
+msgstr "Gerente de Banco de Horas"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__time_bank_real
+msgid "Time Bank Real"
+msgstr "Banco de Horas Real"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
@@ -157,7 +304,27 @@ msgstr "Tempo alterado"
 #: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet__total_attendance
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
 msgid "Total Attendance"
-msgstr "Presença Total"
+msgstr "Total de Horas Trabalhadas"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__total_difftime
+msgid "Total Difftime"
+msgstr "Total Presença Negativa"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__total_leave_time
+msgid "Total Leave Time"
+msgstr "Total de Folgas"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_employee__total_overtime
+msgid "Total Overtime"
+msgstr "Total Presença Positiva"
+
+#. module: epa_hr_attendances_overtime_custom
+#: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet__total_overtime_real
+msgid "Total Overtime (Real)"
+msgstr "Total Presença Positiva (Real)"
 
 #. module: epa_hr_attendances_overtime_custom
 #: model:ir.model.fields,field_description:epa_hr_attendances_overtime_custom.field_hr_attendance_sheet__total_planned_attendance
@@ -170,3 +337,34 @@ msgstr "Total Planejado de Presença"
 #: model_terms:ir.ui.view,arch_db:epa_hr_attendances_overtime_custom.report_hr_attendance_sheet
 msgid "Worked Hours"
 msgstr "Horas Trabalhadas"
+
+#. module: hr_attendances_overtime
+#: model_terms:ir.ui.view,arch_db:hr_attendances_overtime.attendance_sheet_form_view
+msgid "ABSENCE"
+msgstr "FALTA"
+
+#. module: hr_attendances_overtime
+#: model:ir.model.fields,field_description:hr_attendances_overtime.field_hr_attendance_sheet__absent
+#: model:ir.model.fields.selection,name:hr_attendances_overtime.selection__hr_attendance_sheet_line__status__absence
+msgid "Absence"
+msgstr "Falta"
+
+#. module: hr_attendances_overtime
+#: model:ir.model.fields.selection,name:hr_attendances_overtime.selection__hr_attendance_sheet_line__status__leave
+msgid "Leave"
+msgstr "Folga"
+
+#. module: hr_attendances_overtime
+#: model:ir.model.fields.selection,name:hr_attendances_overtime.selection__hr_attendance_sheet_line__status__weekend
+msgid "Week End"
+msgstr "Fim de Semana"
+
+#. module: hr_attendances_overtime
+#: model:ir.model.fields.selection,name:hr_attendances_overtime.selection__hr_attendance_sheet_line__status__weekday
+msgid "WeekDay"
+msgstr "Dia Útil"
+
+#. module: hr_attendances_overtime
+#: model:ir.model.fields.selection,name:hr_attendances_overtime.selection__hr_overtime_line__policie_type__week_end
+msgid "Weekend"
+msgstr "Fim de Semana"

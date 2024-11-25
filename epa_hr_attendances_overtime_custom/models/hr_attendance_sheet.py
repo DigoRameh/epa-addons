@@ -6,7 +6,7 @@ from datetime import datetime, time, timedelta
 import pytz
 from pytz import timezone
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class HrAttendanceSheet(models.Model):
@@ -18,6 +18,11 @@ class HrAttendanceSheet(models.Model):
         "hr.attendance", string="HR Attendance", compute="_compute_attendances"
     )
     total_overtime_real = fields.Float("Total Overtime (Real)")
+    total_sundays_holidays = fields.Float(
+        string="Sundays and Holidays",
+        compute="_compute_total_sundays_holidays",
+        readonly=True,
+    )
 
     def _compute_attendances(self):
         for line in self:
@@ -166,6 +171,18 @@ class HrAttendanceSheet(models.Model):
                         }
                     )
 
+                if vals["status"] == "leave" and vals["total_attendance"]:
+                    total_attendance = vals["total_attendance"]
+                    planned_attendance = vals["total_planned_attendance"]
+                    if total_attendance > planned_attendance:
+                        vals.update(
+                            {"overtime": total_attendance - planned_attendance or False}
+                        )
+                    elif total_attendance < planned_attendance:
+                        vals.update(
+                            {"difftime": planned_attendance - total_attendance or False}
+                        )
+
                 if flage and vals:
                     self.env["hr.attendance.sheet.line"].create(vals)
         self.employee_id.attendance_sheet_id = self.id or False
@@ -201,6 +218,20 @@ class HrAttendanceSheet(models.Model):
             "epa_hr_attendances_overtime_custom.action_report_hr_attendance_sheet"
         ).report_action(self, data=datas)
 
+    @api.depends("attendance_sheet_ids")
+    def _compute_total_sundays_holidays(self):
+        for sheet in self:
+            resource_calendar_id = sheet.employee_id.resource_calendar_id
+            global_leaves_ids = resource_calendar_id.global_leave_ids
+            holidays = global_leaves_ids.mapped("date_from")
+            holiday_dates = {holiday.date() for holiday in holidays}
+            sundays_holidays = sheet.attendance_sheet_ids.filtered(
+                lambda x: x.day == "Sunday" or x.date in holiday_dates
+            )
+            sheet.total_sundays_holidays = sum(
+                sundays_holidays.mapped("total_attendance")
+            )
+
 
 class HrAttendanceSheetLine(models.Model):
     """Attendance Sheet Line."""
@@ -208,3 +239,43 @@ class HrAttendanceSheetLine(models.Model):
     _inherit = "hr.attendance.sheet.line"
 
     total_planned_attendance = fields.Float(string="Total Planned Attendance")
+    attendance_ids = fields.One2many(
+        "hr.attendance", string="HR Attendance", compute="_compute_attendances"
+    )
+    first_check_out = fields.Float(
+        string="First Check Out",
+        compute="_compute_lunch",
+        readonly=True,
+    )
+    last_check_in = fields.Float(
+        string="Last Check In",
+        compute="_compute_lunch",
+        readonly=True,
+    )
+
+    @api.depends("name_id")
+    def _compute_attendances(self):
+        for line in self:
+            line.attendance_ids = line.name_id.attendance_ids.filtered(
+                lambda x: x.check_in.date() == line.date
+            )
+
+    @api.depends("attendance_ids")
+    def _compute_lunch(self):
+        for line in self:
+            if len(line.attendance_ids) < 2:
+                line.first_check_out = 0.0
+                line.last_check_in = 0.0
+            else:
+
+                def datetime_to_float(dt, tz):
+                    dt_tz = dt.astimezone(timezone(tz))
+                    return dt_tz.hour + (dt_tz.minute * 100 / 60) / 100.0
+
+                first_check_out = line.attendance_ids[0].check_out
+                last_index = len(line.attendance_ids) - 1
+                last_check_in = line.attendance_ids[last_index].check_in
+
+                calendar_tz = line.name_id.employee_id.resource_calendar_id.tz
+                line.first_check_out = datetime_to_float(first_check_out, calendar_tz)
+                line.last_check_in = datetime_to_float(last_check_in, calendar_tz)

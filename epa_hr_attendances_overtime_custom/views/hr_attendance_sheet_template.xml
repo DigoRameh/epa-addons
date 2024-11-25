@@ -1,24 +1,86 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<odoo noupdate="1">
+<odoo>
 <template id="report_hr_attendance_sheet">
     <t t-set="o" t-value="doc" />
-    <t t-call="web.basic_layout">
+    <t t-set="company" t-value="doc.employee_id.company_id" />
+    <t t-call="web.external_layout_boxed">
         <div class="page">
-            <div class="oe_structure" />
             <h2>
                 <span>Attendance Sheet: </span>
                 <span t-field="o.employee_id.name" />
             </h2>
-            <h6>
+            <div id="employee_informations" class="row">
+                <div class="col-4">
+                    <div>
+                        <strong>CPF: </strong>
+                        <span t-field="o.employee_id.cpf" />
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <strong>Função: </strong>
+                        <span t-field="o.employee_id.job_id.name" />
+                    </div>
+                    <div class="mb-2">
+                        <strong>PIS: </strong>
+                        <span t-field="o.employee_id.pis_pasep" />
+                    </div>
+                    <div>
+                        <strong>Data de Admissão: </strong>
+                        <span t-field="o.employee_id.first_contract_date" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mt16 mb16">
+                        <strong>Horário de Trabalho: </strong>
+                    </div>
+                    <t
+                            t-set="calendar_lines"
+                            t-value="o.employee_id.resource_calendar_id.attendance_ids"
+                        />
+                    <t
+                            t-set="days_of_week"
+                            t-value="sorted(set(calendar_lines.mapped('dayofweek')))"
+                        />
+                    <t t-foreach="days_of_week" t-as="day_of_week">
+                        <div class="row">
+                            <div class="col-4">
+                                <t t-if="day_of_week == '0'">Segunda-feira</t>
+                                <t t-if="day_of_week == '1'">Terça-feira</t>
+                                <t t-if="day_of_week == '2'">Quarta-feira</t>
+                                <t t-if="day_of_week == '3'">Quinta-feira</t>
+                                <t t-if="day_of_week == '4'">Sexta-feira</t>
+                                <t t-if="day_of_week == '5'">Sábado</t>
+                                <t t-if="day_of_week == '6'">Domingo</t>
+                            </div>
+                            <t
+                                    t-foreach="calendar_lines.filtered(lambda x: x.dayofweek == day_of_week)"
+                                    t-as="hours"
+                                >
+                                <div class="col-4">
+                                    <span
+                                            t-esc="hours.hour_from"
+                                            t-options='{"widget": "float_time"}'
+                                        />
+                                    <span> - </span>
+                                    <span
+                                            t-esc="hours.hour_to"
+                                            t-options='{"widget": "float_time"}'
+                                        />
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            <h5 style="margin: 10px 0;">
                 <span>Period: </span>
                 <span t-field="o.request_date_from" />
                 <span> - </span>
                 <span t-field="o.request_date_to" />
-                <span> - </span>
-                <span>Empresa: </span>
-                <span t-field="o.employee_id.company_id" />
-            </h6>
+                <span> - Empresa: </span>
+                <span t-field="company.name" />
+            </h5>
             <div id="informations" class="row mt16 mb16">
+                <!-- Total de Presença Planejada -->
                 <div class="col-2 bm-0" style="font-size: 12px">
                     <strong>Total Planned Attendance</strong>
                     <p
@@ -27,30 +89,37 @@
                             t-options='{"widget": "float_time"}'
                         />
                 </div>
+                <!-- Total de Horas Extras  (Positivo)-->
                 <div class="col-2 bm-0" style="font-size: 12px">
-                    <strong>Total Attendance</strong>
-                    <p
-                            t-field="o.total_attendance"
-                            class="m-0"
-                            t-options='{"widget": "float_time"}'
-                        />
-                </div>
-                <div class="col-2 bm-0" style="font-size: 12px">
-                    <strong>Total Overtime</strong>
+                    <strong>Total Pos. Attendance</strong>
                     <p
                             t-field="o.total_overtime"
                             class="m-0"
                             t-options='{"widget": "float_time"}'
                         />
                 </div>
+                <!--
+                    Total de Horas Negativa
+                    Diferença de Horas, horas faltantes comparado com o estimado)
+                 -->
                 <div class="col-2 bm-0" style="font-size: 12px">
-                    <strong>Total Overtime (Real)</strong>
+                    <strong>Total Neg. Attendance</strong>
                     <p
-                            t-field="o.total_overtime_real"
+                            t-field="o.total_difftime"
                             class="m-0"
                             t-options='{"widget": "float_time"}'
                         />
                 </div>
+                <!-- Total de Saldo de Horas -->
+                <div class="col-2 bm-0" style="font-size: 12px">
+                    <strong>Total Attendance Balance</strong>
+                    <p
+                            t-esc="o.total_overtime - o.total_difftime - o.total_sundays_holidays"
+                            class="m-0"
+                            t-options='{"widget": "float_time"}'
+                        />
+                </div>
+                <!-- Total de Ausência -->
                 <div class="col-2 bm-0" style="font-size: 12px">
                     <strong>Total Absence</strong>
                     <p
@@ -59,18 +128,11 @@
                             t-options='{"widget": "float_time"}'
                         />
                 </div>
+                <!-- Total de Horas Extras -->
                 <div class="col-2 bm-0" style="font-size: 12px">
-                    <strong>Total Late in</strong>
+                    <strong>Horas Extras</strong>
                     <p
-                            t-field="o.total_latein"
-                            class="m-0"
-                            t-options='{"widget": "float_time"}'
-                        />
-                </div>
-                <div class="col-2 bm-0" style="font-size: 12px">
-                    <strong>Total Diff Time</strong>
-                    <p
-                            t-field="o.total_difftime"
+                            t-field="o.total_sundays_holidays"
                             class="m-0"
                             t-options='{"widget": "float_time"}'
                         />
@@ -81,89 +143,110 @@
                     <tr>
                         <t t-set="colspan" t-value="5" />
                         <th name="th_date" class="text-left">Date</th>
-                        <th name="th_day" class="text-right">Day</th>
-                        <th name="th_psignin" class="text-right">Planned Signin</th>
-                        <th name="th_psignout" class="text-right">Planned Signout</th>
-                        <th name="th_asignin" class="text-right">Actual Signin</th>
-                        <th name="th_asignout" class="text-right">Actual Signout</th>
-                        <th name="th_latein" class="text-right">Late in</th>
-                        <th name="th_overtime" class="text-right">Overtime</th>
-                        <th name="th_difftime" class="text-right">Diff Time</th>
-                        <th
-                                name="th_total_planned_attendance"
-                                class="text-right"
-                            >Total Planned Attendance</th>
-                        <th
-                                name="th_total_attendance"
-                                class="text-right"
-                            >Total Attendance</th>
-                        <th name="th_status" class="text-right">Status</th>
+                        <th name="th_day" class="text-left">Day</th>
+                        <th name="th_asignin" class="text-left">Check In</th>
+                        <th name="th_asignout" class="text-left">Check Out</th>
+                        <th name="th_signin" class="text-left">Check In</th>
+                        <th name="th_signout" class="text-left">Check Out</th>
+                        <th name="th_total_attendance" class="text-left">
+                            Total Attendance
+                        </th>
+                        <th name="th_total_planned_attendance" class="text-left">
+                            Total Planned Attendance
+                        </th>
+                        <th name="th_overtime" class="text-left">Overtime</th>
+                        <th name="th_difftime" class="text-left">Diff Time</th>
+                        <th name="th_status" class="text-left">Status</th>
                     </tr>
                 </thead>
                 <tbody class="sale_tbody">
                     <t t-foreach="doc.attendance_sheet_ids" t-as="line">
                         <tr class="bg-200 font-weight-bold">
-                            <td name="td_date">
+                            <td name="td_date" class="text-left">
                                 <span t-field="line.date" />
                             </td>
-                            <td name="td_day" class="text-right">
-                                <span t-field="line.day" />
+                            <td name="td_day" class="text-left">
+                                <t t-if="line.day == 'Monday'">Segunda-feira</t>
+                                <t t-if="line.day == 'Tuesday'">Terça-feira</t>
+                                <t t-if="line.day == 'Wednesday'">Quarta-feira</t>
+                                <t t-if="line.day == 'Thursday'">Quinta-feira</t>
+                                <t t-if="line.day == 'Friday'">Sexta-feira</t>
+                                <t t-if="line.day == 'Saturday'">Sábado</t>
+                                <t t-if="line.day == 'Sunday'">Domingo</t>
                             </td>
-                            <td name="td_psignin" class="text-right">
-                                <span
-                                        t-field="line.psignin"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                            <td name="td_psignout" class="text-right">
-                                <span
-                                        t-field="line.psignout"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                            <td name="td_asignin" class="text-right">
-                                <span
-                                        t-field="line.asignin"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                            <td name="td_asignout" class="text-right">
-                                <span
-                                        t-field="line.asignout"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                            <td name="td_latein" class="text-right">
-                                <span
-                                        t-field="line.latein"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                            <td name="td_overtime" class="text-right">
-                                <span
-                                        t-field="line.overtime"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                            <td name="td_difftime" class="text-right">
-                                <span
-                                        t-field="line.difftime"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                            <td name="td_total_planned_attendance" class="text-right">
-                                <span
-                                        t-field="line.total_planned_attendance"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                            <td name="td_total_attendance" class="text-right">
+                            <t
+                                    t-if="line.first_check_out == 0.0 and line.last_check_in == 0.0"
+                                >
+                                <td name="td_asignin" class="text-left">
+                                    <span
+                                            t-field="line.asignin"
+                                            t-options='{"widget": "float_time"}'
+                                        />
+                                    <td name="td_asignout" class="text-left">
+                                        <span
+                                                t-field="line.asignout"
+                                                t-options='{"widget": "float_time"}'
+                                            />
+                                    </td>
+                                    <td name="td_first_check_out" class="text-left">
+                                        <span>00:00</span>
+                                    </td>
+                                    <td name="td_last_check_in" class="text-left">
+                                        <span>00:00</span>
+                                    </td>
+                                </td>
+                            </t>
+                            <t t-else="">
+                                <td name="td_asignin" class="text-left">
+                                    <span
+                                            t-field="line.asignin"
+                                            t-options='{"widget": "float_time"}'
+                                        />
+                                </td>
+                                <td name="td_first_check_out" class="text-left">
+                                    <span
+                                            t-field="line.first_check_out"
+                                            t-options='{"widget": "float_time"}'
+                                        />
+                                </td>
+                                <td name="td_last_check_in" class="text-left">
+                                    <span
+                                            t-field="line.last_check_in"
+                                            t-options='{"widget": "float_time"}'
+                                        />
+                                </td>
+                                <td name="td_asignout" class="text-left">
+                                    <span
+                                            t-field="line.asignout"
+                                            t-options='{"widget": "float_time"}'
+                                        />
+                                </td>
+                            </t>
+                            <td name="td_total_attendance" class="text-left">
                                 <span
                                         t-field="line.total_attendance"
                                         t-options='{"widget": "float_time"}'
                                     />
                             </td>
-                            <td name="td_status" class="text-right">
+                            <td name="td_total_planned_attendance" class="text-left">
+                                <span
+                                        t-field="line.total_planned_attendance"
+                                        t-options='{"widget": "float_time"}'
+                                    />
+                            </td>
+                            <td name="td_overtime" class="text-left">
+                                <span
+                                        t-field="line.overtime"
+                                        t-options='{"widget": "float_time"}'
+                                    />
+                            </td>
+                            <td name="td_difftime" class="text-left">
+                                <span
+                                        t-field="line.difftime"
+                                        t-options='{"widget": "float_time"}'
+                                    />
+                            </td>
+                            <td name="td_status" class="text-left">
                                 <span t-field="line.status" />
                             </td>
                         </tr>
@@ -171,56 +254,23 @@
                 </tbody>
             </table>
 
-            <p style="page-break-after: always;" />
-
-            <h3>
-                <span>Attendance Detail</span>
-            </h3>
-
-            <table class="table table-sm o_main_table" style="font-size: 10px">
-                <thead>
-                    <tr>
-                        <t t-set="colspan" t-value="5" />
-                        <th name="th_check_in">Check In</th>
-                        <th name="th_check_out">Check Out</th>
-                        <th name="th_time_changed_manually">Time changed</th>
-                        <th name="th_attendance_reason_ids">Attendance Reason</th>
-                        <th name="th_worked_hours" class="text-right">Worked Hours</th>
-                    </tr>
-                </thead>
-                <tbody class="sale_tbody">
-                    <t t-foreach="doc.attendance_ids" t-as="line">
-                        <tr class="bg-200 font-weight-bold">
-                            <td name="td_check_in">
-                                <span t-field="line.check_in" />
-                            </td>
-                            <td name="td_check_out">
-                                <span t-field="line.check_out" />
-                            </td>
-                            <td name="td_time_changed_manually">
-                                <span t-field="line.time_changed_manually" />
-                            </td>
-                            <td name="td_attendance_reason_ids">
-                                <span t-field="line.attendance_reason_ids" />
-                            </td>
-                            <td name="td_worked_hours" class="text-right">
-                                <span
-                                        t-field="line.worked_hours"
-                                        t-options='{"widget": "float_time"}'
-                                    />
-                            </td>
-                        </tr>
-                    </t>
-                </tbody>
-            </table>
+            <div class="row" style="margin-top: 5rem;">
+                <div class="col-6" />
+                <div class="col-6 text-right">
+                    <span>
+                        ___________________________________________________________________
+                    </span>
+                    <div>
+                        <span>Assinatura do funcionário</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </t>
 </template>
 
 <template id="main_report_hr_attendance_sheet">
     <t t-call="web.html_container">
-        <t t-set="data_report_margin_top" t-value="12" />
-        <t t-set="data_report_header_spacing" t-value="9" />
         <t t-set="data_report_landscape" t-value="True" />
         <t t-set="full_width" t-value="True" />
         <t t-foreach="docs" t-as="doc">
