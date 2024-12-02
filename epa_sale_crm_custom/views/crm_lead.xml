@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 - TODAY, Kaynnan Lemes <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_crm_lead_form_inherited" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherited (in epa_sale_crm_custom)</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <!-- Insert after 'name' -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="quotation_analytic_account_id" invisible="1" />
+            </xpath>
+            <!-- Insert alias_name after the 'name' -->
+            <xpath expr="//div[hasclass('oe_title')]/h1" position="after">
+                <label for="alias_name" />
+                <h2>
+                    <field name="alias_name" placeholder="Codename" />
+                </h2>
+            </xpath>
+            <!-- Insert new pages after the 'lead' page -->
+            <xpath expr="//page[@name='lead']" position="after">
+                <!-- Requirements Page -->
+                <page name="epa_requirements" string="Requirements">
+                    <group>
+                        <field name="type_id" />
+                    </group>
+                    <group>
+                        <group string="Criteria">
+                            <field name="interesting_client" />
+                            <field name="appropriate_equipment" />
+                            <field name="adequate_documentation" />
+                            <field name="validated_methodologies" />
+                            <field name="available_labor" />
+                            <field name="qualified_labor" />
+                            <field name="completion_period" />
+                            <field name="payment_term" />
+                            <field name="operational_viability" />
+                            <field name="financial_viability" />
+                            <field name="client_financial_health" />
+                            <field name="client_cash_flow" />
+                            <field name="technological_risks" />
+                            <field name="legal_risks" />
+                            <field name="political_risks" />
+                        </group>
+                    </group>
+                </page>
+
+                <!-- Subcontracting Page -->
+                <page name="epa_subcontracting" string="Subcontracting">
+                    <group>
+                        <field name="subcontracting_possibility" />
+                    </group>
+                    <group
+                        attrs="{'invisible': [('subcontracting_possibility', '=', False)]}"
+                    >
+                        <field name="subcontracting_laboratory" />
+                        <field name="subcontracting_probe" />
+                        <field name="subcontracting_sampling" />
+                        <field name="subcontracting_others" />
+                    </group>
+                </page>
+
+                <!-- Company Page -->
+                <page name="epa_company" string="Company">
+                    <group>
+                        <group>
+                            <field name="group_companies" />
+                            <field name="company_contacts" />
+                            <field name="proposal_date" />
+                            <field name="project_manager" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_quick_create_opportunity_form_inherited" model="ir.ui.view">
+        <field name="name">crm.lead.form.quick_create (in epa_sale_crm_custom)</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form" />
+        <field name="arch" type="xml">
+            <!-- Insert alias_name after the 'name' -->
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="alias_name" placeholder="Codename" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
