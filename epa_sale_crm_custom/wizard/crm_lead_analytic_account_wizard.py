@@ -29,7 +29,7 @@ class CrmLeadAnalyticAccountWizard(models.TransientModel):
         self.ensure_one()
         if self.create_new_analytic:
             values = {
-                "name": self.lead_id.name,
+                "name": self.lead_id.name[3:],
                 "code": self.lead_id.alias_name,
                 "partner_id": self.lead_id.partner_id.id,
             }
